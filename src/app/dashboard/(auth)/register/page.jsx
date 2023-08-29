@@ -1,44 +1,39 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
-import styles from "./page.module.css"
+import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
 
 const Register = () => {
+  const [err, setErr] = useState(false);
+  const router = useRouter();
 
-  const [err, setErr] = useState(false)
-  const router = useRouter()
-
-
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const name  = e.target[0].value;
+    const name = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
 
-
     try {
-
       const res = await fetch("/api/auth/register", {
-        method:"POST",  
-        headers : {
-          "Content-Type" : "application/json"
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        body : JSON.stringify({
+        body: JSON.stringify({
           name,
           email,
-          password
-        })
+          password,
+        }),
+      });
 
-      })
-
-      res.status === 201 &&  router.push("/dashboard/login?success=Account has been created");
-
+      res.status === 201 &&
+        router.push("/dashboard/login?success=Account has been created");
     } catch (error) {
       setErr(true);
     }
-  }
+  };
 
   return (
     <div className={styles.container}>
@@ -61,10 +56,16 @@ const Register = () => {
           className={styles.input}
           required
         />
-        <button className={styles.button} type="submit"> Register</button>
+        <button className={styles.button} type="submit">
+          {" "}
+          Register
+        </button>
       </form>
       {err && "Something went wrong"}
-      <Link href = "/dashboard/login">Login with an existing account</Link>
+      <span className={styles.or}>- OR -</span>
+      <Link className={styles.link} href="/dashboard/login">
+        Login with an existing account
+      </Link>
     </div>
   );
 };
