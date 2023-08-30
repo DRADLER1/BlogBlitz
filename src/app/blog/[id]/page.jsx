@@ -2,10 +2,10 @@ import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import mainURL from "@/utils/URL";
+
 
 const getData = async(id) => {
-  const res = await fetch(`${mainURL}/posts/${id}`, {
+  const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
     cache: "no-store",
   });
 
