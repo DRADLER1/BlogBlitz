@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const Login = () => {
   const session = useSession();
-  console.log(session);
+ 
   const router = useRouter();
 
   const handleSubmit = async (e) => {
