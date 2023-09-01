@@ -1,12 +1,11 @@
-
 import React from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import mainURL from "@/utils/URL";
 
-
- const getData = async() => {
-  const res = await fetch(`http://localhost:3000/api/posts`, {
+const getData = async () => {
+  const res = await fetch(`${mainURL}/posts`, {
     cache: "no-store",
   });
 
@@ -15,9 +14,9 @@ import Image from "next/image";
   }
 
   return res.json();
-}
+};
 
-const Blog = async  () => {
+const Blog = async () => {
   const data = await getData();
   return (
     <div className={styles.mainContainer}>
