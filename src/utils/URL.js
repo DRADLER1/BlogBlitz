@@ -1,2 +1,2 @@
-const mainURL = "http://127.0.0.1:3000/api"
+const mainURL = "https://blog-blitz.vercel.app/api"
 export default mainURL;
