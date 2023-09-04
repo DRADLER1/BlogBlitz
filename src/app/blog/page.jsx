@@ -5,7 +5,7 @@ import Image from "next/image";
 import mainURL from "@/utils/URL";
 
 const getData = async () => {
-  const res = await fetch(`${mainURL}/posts`, {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts`, {
     cache: "no-store",
   });
 

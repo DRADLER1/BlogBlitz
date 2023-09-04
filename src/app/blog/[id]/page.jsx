@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import mainURL from "@/utils/URL";
 
 const getData = async (id) => {
-  const res = await fetch(`${mainURL}/posts/${id}`, {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts${id}`, {
     cache: "no-store",
   });
 
